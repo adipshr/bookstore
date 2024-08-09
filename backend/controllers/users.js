@@ -88,4 +88,15 @@ async function handleUserSignup(req, res) {
   }
 }
 
-module.exports = { getCurrentUser, handleUserSignup, handleUserLogin };
+// function to handle logout
+async function handleUserLogout(req, res) {
+  res.clearCookie("token");
+  res.status(200).json({ message: "Logged out successfully" });
+}
+
+module.exports = {
+  getCurrentUser,
+  handleUserSignup,
+  handleUserLogin,
+  handleUserLogout,
+};

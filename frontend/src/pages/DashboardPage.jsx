@@ -14,6 +14,13 @@ const DashboardPage = () => {
     navigate("/viewBooks");
   }
 
+  async function handleLogout() {
+    await axios.get("http://localhost:3000/user/logout", {
+      withCredentials: true,
+    });
+    navigate("/login");
+  }
+
   useEffect(() => {
     const getCurrentUser = async () => {
       try {
@@ -43,6 +50,7 @@ const DashboardPage = () => {
         <h2>Hello, {user?.name.split(" ")[0]}!</h2>
         <button onClick={handleAddBook}>Add Book</button>
         <button onClick={handleViewBook}>View Books</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );
